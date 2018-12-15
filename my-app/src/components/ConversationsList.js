@@ -10,7 +10,7 @@ import Cable from './Cable';
 class ConversationsList extends React.Component {
 
   state = {
-    conversations: ['this is a start'],
+    conversations: [],
     activeConversation: null
   };
 
