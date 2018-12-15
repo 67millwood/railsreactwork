@@ -1,3 +1,5 @@
+// src/components/ConversationsList.js
+
 import React from 'react';
 import { ActionCable } from 'react-actioncable-provider';
 import { API_ROOT } from '../constants';
@@ -6,12 +8,14 @@ import MessagesArea from './MessagesArea';
 import Cable from './Cable';
 
 class ConversationsList extends React.Component {
+
   state = {
-    conversations: [],
+    conversations: ['this is a start'],
     activeConversation: null
   };
 
   componentDidMount = () => {
+    console.log("yes")
     fetch(`${API_ROOT}/conversations`)
       .then(res => res.json())
       .then(conversations => this.setState({ conversations }));
@@ -70,7 +74,7 @@ class ConversationsList extends React.Component {
 
 export default ConversationsList;
 
-// helpers
+/// helpers
 
 const findActiveConversation = (conversations, activeConversation) => {
   return conversations.find(
@@ -83,7 +87,7 @@ const mapConversations = (conversations, handleClick) => {
     return (
       <li key={conversation.id} onClick={() => handleClick(conversation.id)}>
         {conversation.title}
-      </li>
-    );
-  });
-};
+        </li>
+        );
+      });
+    };
